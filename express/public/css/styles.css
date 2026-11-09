@@ -235,3 +235,25 @@ footer {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
 }
+
+/* ---------- Character sections ---------- */
+.section-title {
+  margin-top: 50px;
+}
+
+.section-title.dark {
+  color: #e05555;
+  border-bottom-color: rgba(224, 85, 85, 0.3);
+}
+
+.card.dark {
+  border-color: rgba(224, 85, 85, 0.2);
+}
+
+.card.dark:hover {
+  box-shadow: 0 10px 30px rgba(224, 85, 85, 0.25);
+}
+
+.cards.four {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
