@@ -1,0 +1,436 @@
+//Part 1.2
+// Example from the handout
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+const message = greet("Frodo");
+console.log(message);
+//Part 1.2
+// Practice 1: Count the trolls in Mordor
+function countTrolls(numberOfTrolls) {
+  return `There are ${numberOfTrolls} trolls in Mordor.`;
+}
+
+console.log(countTrolls(5));
+
+// Practice 2: Reverse a character's name
+function reverseName(name) {
+  return name.split("").reverse().join("");
+}
+
+console.log(reverseName("Frodo"));
+//Part 1.3
+// Example from the handout
+const greet2 = function (name) {
+  return `Hello, ${name}!`;
+};
+
+console.log(greet2("Sam"));
+//Part 1.3
+// Practice 1: Can the elves defeat the orcs?
+const defeatOrcs = function (numberOfOrcs, numberOfElves) {
+  if (numberOfElves > numberOfOrcs) {
+    return "The elves can defeat the orcs.";
+  }
+
+  return "The elves cannot defeat the orcs.";
+};
+
+console.log(defeatOrcs(300, 500));
+console.log(defeatOrcs(500, 300));
+
+// Practice 2: Is this character a ring bearer?
+const isRingBearer = function (name) {
+  return name === "Frodo" || name === "Sam";
+};
+
+console.log(isRingBearer("Frodo"));
+console.log(isRingBearer("Sam"));
+console.log(isRingBearer("Gandalf"));
+
+//Part 1.4
+// One parameter
+const bye = name => `Bye-bye, ${name}!`;
+console.log(bye("Frodo"));
+
+// Two parameters
+const add = (a, b) => a + b;
+console.log(add(1, 2));
+
+// No parameters
+const getRingBearer = () => "Frodo Baggins";
+console.log(getRingBearer());
+
+// Multiple statements
+const battle = (warrior, weapon) => {
+  console.log(`${warrior} wields a ${weapon}.`);
+  return `${warrior} fights bravely!`;
+};
+
+console.log(battle("Aragorn", "sword"));
+
+//Part 1.5
+// Constructor example from the handout
+function Elf(name, weapon) {
+  this.name = name;
+  this.weapon = weapon;
+
+  this.describe = function () {
+    console.log(`${this.name} wields a ${this.weapon}.`);
+  };
+}
+
+const legolas = new Elf("Legolas", "bow and arrow");
+const tauriel = new Elf("Tauriel", "dagger");
+
+legolas.describe();
+tauriel.describe();
+
+//Part 1.5
+// 1. Convert travelTo to an arrow function
+const travelTo = location => `Traveling to ${location}`;
+console.log(travelTo("Mordor"));
+
+// 2. Double each number
+const numbers = [1, 2, 3, 4];
+const doubleNumbers = values => values.map(number => number * 2);
+console.log(doubleNumbers(numbers));
+
+// 3. Filter out the even numbers, keeping the odd ones
+const numbers2 = [1, 2, 3, 4, 5, 6];
+const removeEvenNumbers = values => values.filter(number => number % 2 !== 0);
+console.log(removeEvenNumbers(numbers2));
+
+// 4. Print a message for each Fellowship member
+const members = ["Frodo", "Sam", "Merry", "Pippin"];
+
+const printFellowship = names => {
+  names.forEach(name => {
+    console.log(`${name} is part of the Fellowship.`);
+  });
+};
+
+printFellowship(members);
+
+// Example from the handout
+function greetWithDefault(name = "Stranger") {
+  return `Hello, ${name}!`;
+}
+
+console.log(greetWithDefault());
+console.log(greetWithDefault("Frodo"));
+
+// Practice: Describe a battle
+function describeBattle(location, enemies = "orcs") {
+  return `The battle at ${location} is against ${enemies}.`;
+}
+
+console.log(describeBattle("Minas Tirith"));
+console.log(describeBattle("Helm's Deep", "Uruk-hai"));
+
+// Example 1: Destructure an array
+const [a, b] = [1, 2];
+console.log(a);
+console.log(b);
+
+// Example 2: Destructure a nested object
+const character = {
+  thename: "Gandalf",
+  thetitle: "the Grey",
+  attributes: {
+    race: "Maia",
+    age: "Ancient",
+  },
+  equipment: {
+    weapon: "Staff",
+    secondaryWeapon: "Sword",
+  },
+};
+
+const {
+  thename,
+  thetitle,
+  attributes: { race, age },
+  equipment: { weapon, secondaryWeapon },
+} = character;
+
+console.log(
+  `${thename}, ${thetitle}, is a ${age} ${race} wielding a ${weapon} and a ${secondaryWeapon}.`
+);
+
+// Practice: Create and destructure a battle object
+{
+  const battle = {
+    location: "Minas Tirith",
+    participants: 10000,
+  };
+
+  const { location, participants } = battle;
+  console.log(`The battle at ${location} had ${participants} participants.`);
+}
+
+===== 2.1 & 2.2 — asynch.js =====
+//Part 2
+//Part 2.1
+// Synchronous example
+console.log("Jon Snow arrives at the Wall.");
+console.log("He takes the black.");
+console.log("He joins the Night's Watch.");
+
+// Asynchronous example
+console.log("Daenerys starts hatching her dragon eggs.");
+
+setTimeout(() => {
+  console.log("Dragon egg hatched!");
+}, 2000);
+
+//setTimeout(() => {
+//  console.log("Dragon egg hatched!");
+//}, 3000);
+
+//setTimeout(() => {
+//  console.log("Dragon egg hatched!");
+//}, 4000);
+
+//setTimeout(() => {
+//  console.log("Dragon egg hatched!");
+//}, 0000);
+
+console.log("Daenerys plans her next battle.");
+
+//Part 2.2
+console.log("Jon Snow starts his watch.");
+
+setTimeout(() => {
+  console.log("Jon Snow spots a White Walker.");
+}, 3000);
+
+console.log("Jon Snow patrols the Wall.");
+
+//Practice
+const guests = ["Jon Snow", "Sansa Stark", "Arya Stark"];
+
+// Welcome each guest right away.
+guests.forEach(guest => {
+  console.log(`Welcome to Winterfell, ${guest}!`);
+});
+
+// Serve each guest a drink after one second.
+guests.forEach(guest => {
+  setTimeout(() => {
+    console.log(`A drink is served to ${guest}.`);
+  }, 1000);
+});
+
+console.log("The entertainment program is starting!");
+
+setTimeout(() => {
+  console.log("The feast has begun!");
+}, 2000);
+
+setTimeout(() => {
+  console.log("The juggler performs.");
+}, 3000);
+
+setTimeout(() => {
+  console.log("The singer performs.");
+}, 4000);
+
+setTimeout(() => {
+  console.log("The dancers perform.");
+}, 5000);
+
+console.log("Thank you all for attending the feast!");
+
+//Part 2.3
+//Example 1 - Is the feast ready?
+//Look for feastPromise.js
+
+===== 2.3 — feastPromise.js =====
+//Part 2.3
+//Exmaple 1 - Is the feast ready?
+const feastPromise = new Promise((resolve, reject) => {
+  const isFeastReady = false; // Change this to true or false to test the promise
+
+  if (isFeastReady) {
+    resolve("The feast is ready! Enjoy the meal.");
+  } else {
+    reject("The feast is not ready yet. Please wait.");
+  }
+});
+
+feastPromise
+  .then(message => {
+    console.log(message);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+===== 2.3 — dragonsPromise.js =====
+//Part 2.3
+//Example 2 - Get Daenerys's dragons
+const getDragons = new Promise((resolve, reject) => {
+  const areDragonsAvailable = false; // Change this to true or false to test the promise
+
+  setTimeout(() => {
+    if (areDragonsAvailable) {
+      resolve(["Drogon", "Rhaegal", "Viserion"]);
+    } else {
+      reject("The dragons could not be found.");
+    }
+  }, 2000);
+});
+
+getDragons
+  .then(dragons => {
+    console.log("Daenerys has dragons:", dragons);
+  })
+  .catch(error => {
+    console.error("Failed to get dragons:", error);
+  });
+
+  ===== 2.4 — promiseChaining.js =====
+  //Part 2.4
+const getDragons = new Promise(resolve => {
+  setTimeout(() => {
+    resolve(["Drogon", "Rhaegal", "Viserion"]);
+  }, 2000);
+});
+
+const prepareArmy = new Promise(resolve => {
+  setTimeout(() => {
+    resolve(["Unsullied", "Dothraki", "Northmen"]);
+  }, 3000);
+});
+
+const forgeWeapons = new Promise(resolve => {
+  setTimeout(() => {
+    resolve(["Valyrian Steel Swords", "Dragonglass Arrows"]);
+  }, 4000);
+});
+
+console.log("Preparing for the Battle of Winterfell...");
+
+Promise.all([getDragons, prepareArmy, forgeWeapons])
+  .then(([dragons, army, weapons]) => {
+    console.log("Daenerys has dragons:", dragons);
+    console.log("Jon Snow has gathered the army:", army);
+    console.log("Weapons are ready:", weapons);
+    return "Battle of Winterfell";
+  })
+  .then(battle => {
+    console.log("Next event:", battle);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
+  //Practice: Prepare for a magical feast
+  
+  const gatherIngredients = new Promise(resolve => {
+  setTimeout(() => {
+    resolve(["Mandrake root", "Moonstone", "Lavender"]);
+  }, 2000);
+});
+
+const prepareHall = new Promise(resolve => {
+  setTimeout(() => {
+    resolve("The enchanted hall is ready.");
+  }, 3000);
+});
+
+const brewPotions = new Promise(resolve => {
+  setTimeout(() => {
+    resolve(["Felix Felicis", "Polyjuice Potion"]);
+  }, 4000);
+});
+
+const sendInvitations = new Promise(resolve => {
+  setTimeout(() => {
+    resolve(["Hermione", "Harry", "Ron"]);
+  }, 2000);
+});
+
+Promise.all([gatherIngredients, prepareHall, brewPotions, sendInvitations])
+  .then(([ingredients, hallMessage, potions, guests]) => {
+    console.log("\nMagical feast practice");
+    console.log("Ingredients:", ingredients);
+    console.log(hallMessage);
+    console.log("Potions:", potions);
+    console.log("Invited wizards:", guests);
+    return "The magical feast is ready!";
+  })
+  .then(message => {
+    console.log(message);
+  })
+  .catch(error => {
+    console.error("Feast preparation failed:", error);
+  });
+
+  ===== 2.5 — promiseAPI.js =====
+  //Part 2.5
+// Promise.all() waits for every promise to succeed.
+const winterMessage = Promise.resolve("Winter is Coming");
+const northMessage = Promise.resolve("The North Remembers");
+const valarMessage = Promise.resolve("Valar Morghulis");
+
+Promise.all([winterMessage, northMessage, valarMessage])
+  .then(messages => {
+    console.log("Messages:", messages);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
+// Promise.race() uses the first promise to finish.
+const arya = new Promise(resolve => {
+  setTimeout(() => resolve("Arya Stark"), 500);
+});
+
+const sansa = new Promise(resolve => {
+  setTimeout(() => resolve("Sansa Stark"), 1000);
+});
+
+Promise.race([arya, sansa])
+  .then(winner => {
+    console.log("First to complete:", winner);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
+===== 3.1 — node_module1.js =====
+const fs = require("fs");
+
+console.log("Starting the spell...");
+
+fs.readFile("magic.txt", "utf8", (error, spell) => {
+  if (error) {
+    console.log("Failed to read the spell");
+    return;
+  }
+
+  console.log("Spell content: " + spell);
+});
+
+console.log("Ready for the next spell!");
+
+===== 3.1 — express/index.js =====
+const express = require("express");
+const path = require("path");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Welcome to Hogwarts!");
+});
+
+app.get("/spell", (req, res) => {
+  const spellPath = path.join(__dirname, "..", "magic.txt");
+  res.sendFile(spellPath);
+});
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
